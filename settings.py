@@ -9,6 +9,7 @@ FILENAME_METADATA = '(?P<date>\d{4}-\d{2}-\d{2})-(?P<slug>.*)'
 DEFAULT_DATE_FORMAT = '%Y-%m-%d'
 DEFAULT_LANG = u'en'
 TIMEZONE = 'UTC'
+THEME = 'theme'
 
 # Blogroll
 LINKS =  (('Pelican', 'http://docs.notmyidea.org/alexis/pelican/'),
