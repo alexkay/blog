@@ -1,10 +1,8 @@
 Title: Spek status update
 Author: Alexander Kojevnikov
-Tags: GNOME, Spek
+Tags: gnome, spek
 
 Just a quick update on the status of [the project][].
-
-</p>
 
 Spek is now translatable, the next version will feature at least these
 translations: Dutch, German, Russian, Swedish and Ukrainian. We use
@@ -13,37 +11,25 @@ your language or to improve an existing translation. Transifex is a very
 easy to use tool, you don't have to know anything about programming to
 translate.
 
-</p>
-
 Some progress has been made on the packaging front, Spek packages are
 now available in [Arch Linux][], [FreeBSD][] and [Gentoo][]
 repositories.
-
-</p>
 
 There's also an [official Ubuntu PPA][] for Spek containing packages for
 Maverick and Natty. I will keep the PPA up-to-date with future Spek and
 Ubuntu releases.
 
-</p>
-
 I also created a package for Debian which needs a sponsor. If you are a
 Debian Developer I would appreciate a review and eventually an upload.
 The package can be found on [mentors.debian.net][].
-
-</p>
 
 Last but not least, the next version will show some OS X love. Many OS X
 specific bugs have already been fixed or are scheduled to be fixed for
 the next release.
 
-</p>
-
 I expect to release Spek 0.7 sometime this spring. If you are feeling
 adventurous, try Spek from [git master][], compilation instructions are
 on [the wiki][].
-
-</p>
 
   [the project]: http://www.spek-project.org/
   [Transifex]: http://www.transifex.net/projects/p/spek/resource/spek/

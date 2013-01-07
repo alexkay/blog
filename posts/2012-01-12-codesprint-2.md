@@ -1,5 +1,5 @@
 Title: CodeSprint 2
-Tags: Development
+Tags: code
 
 Last weekend [Interviewstreet][] conducted a second [CodeSprint][]. The
 event had a format similar to the Google's [CodeJam][]: they gave you a
@@ -22,10 +22,7 @@ If you are interested in solutions make sure to check out the official
 [CodeSprint website][CodeSprint], they should have them available in a
 couple of days.
 
-Picking Cards
--------------
-
-</p>
+### Picking Cards
 
 Links: [problem][], [solution][]
 
@@ -38,10 +35,7 @@ The brute-force approach is *O(N^2^)* and could be too slow. To speed it
 up, we keep track of the last *m : c~m~ ≤ n* and start from there. As
 *m* is never decreased the overall complexity is *O(N)*.
 
-Coin Tosses
------------
-
-</p>
+### Coin Tosses
 
 Links: [problem][1], [solution][2]
 
@@ -53,10 +47,7 @@ However, for *m = 0* the expected number of tosses can be expressed
 analytically: *T(n, 0) = 2^n+1^ - 2* ([proof][]). Add the boundary
 condition *T(n, n) = 0* and memoisation, and you have a solution.
 
-Fraud Prevention
-----------------
-
-</p>
+### Fraud Prevention
 
 Links: [problem][3], [solution][4]
 
@@ -70,10 +61,7 @@ I found this problem a bit uninteresting for a contest -- it's tedious
 and, uhm, un-algorithmic. However it would probably make a decent
 interview questions with all its practicalities.
 
-Subsequence Weighting
----------------------
-
-</p>
+### Subsequence Weighting
 
 Links: [problem][5], [solution][6]
 
@@ -94,10 +82,7 @@ With such a data structure, the running time is still at *O(n log n)*.
 That was my favourite question, and the one I spent the most time on,
 even though in retrospect it doesn't look all that complex.
 
-Quora Nearby
-------------
-
-</p>
+### Quora Nearby
 
 Links: [problem][7], [solution][8]
 

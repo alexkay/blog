@@ -1,5 +1,5 @@
 Title: Spek 0.6 Released
-Tags: GNOME, Spek
+Tags: spek, gnome
 
 I'm happy to announce the release of [Spek 0.6][] – a multi-platform
 acoustic spectrum analyser.

@@ -1,5 +1,5 @@
 Title: Vertical panel in GNOME
-Tags: GNOME, Linux
+Tags: gnome, linux
 
 *UPDATE 2009-09-06: Read the [follow-up post][]*
 

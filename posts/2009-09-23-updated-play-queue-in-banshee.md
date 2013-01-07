@@ -1,5 +1,5 @@
 Title: Updated Play Queue In Banshee
-Tags: Banshee, GNOME
+Tags: banshee, gnome
 
 [Banshee][] 1.6 will include an updated Play Queue extension. The
 changes are already in [git master][], here are a few teaser

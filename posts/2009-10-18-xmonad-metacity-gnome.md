@@ -1,6 +1,6 @@
 Title: xmonad ⋙ metacity (mod GNOME)
 Author: Alexander Kojevnikov
-Tags: GNOME, Haskell
+Tags: gnome, haskell, xmonad
 
 [xmonad][] is an elegantly minimalist and lightning fast window manager
 for [X][] written in [Haskell][]. I wanted to play with it for a long
@@ -19,8 +19,6 @@ A few notes about xmonad set up and usage:
 
 -   [Recommended way][] to set up xmonad with GNOME is to
 
-    </p>
-
     <!-- HTML generated using hilite.me -->
 
     <div style="overflow:auto;width:auto;color:white;background:black;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
@@ -29,22 +27,15 @@ A few notes about xmonad set up and usage:
     ~~~~
 
     </div>
-    </p>
 
     before starting gnome-session, but it didn't work for me. I tried
     every suggested place: \~/.gnomerc, \~/.xsession, \~/.profile,
     \~/.xinitrc; but none of them worked – GNOME always started with
     Metacity.
 
-    </p>
-
     What worked though is this:
 
-    </p>
-
     -   Create a file in /usr/share/applications called xmonad.desktop:
-
-        </p>
 
         <!-- HTML generated using hilite.me -->
 
@@ -54,11 +45,9 @@ A few notes about xmonad set up and usage:
         ~~~~
 
         </div>
-        </p>
-        <p>
+
     -   Change this GConf key from 'metacity' to 'xmonad':
 
-        </p>
         <!-- HTML generated using hilite.me -->
 
         <div style="overflow:auto;width:auto;color:white;background:black;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
@@ -67,15 +56,11 @@ A few notes about xmonad set up and usage:
         ~~~~
 
         </div>
-        </p>
-        <p>
 
 -   On startup, xmonad doesn't set the usual left-arrow cursor but
     inherits an ugly X cursor which looks like it was created in the
     eighties. To change it, add this line to your \~/.xinitrc file just
     before you start gnome-session:
-
-    </p>
 
     <!-- HTML generated using hilite.me -->
 
@@ -85,12 +70,9 @@ A few notes about xmonad set up and usage:
     ~~~~
 
     </div>
-    </p>
-    <p>
+
 -   You need to create a config file in \~/.xmonad called xmonad.hs and
     [add this][]:
-
-    </p>
 
     <!-- HTML generated using hilite.me -->
 
@@ -100,13 +82,10 @@ A few notes about xmonad set up and usage:
     ~~~~
 
     </div>
-    </p>
-    <p>
+
 -   That's right, the config file is a Haskell program that starts
     xmonad, which means it's extremely customisable. Let's modify it a
     bit:
-
-    </p>
 
     <!-- HTML generated using hilite.me -->
 
@@ -128,26 +107,19 @@ A few notes about xmonad set up and usage:
     </tr>
     </table>
     </div>
-    </p>
 
     All keyboard short-cuts in xmonad are in the form Mod-X or
     Mod-Shift-X, where Mod is by default the Alt key. Line 7 tells
     xmonad to use the Win key – Alt is heavily used by GNOME
     applications.
 
-    </p>
-    <p>
 -   When touch-typing, some shortcuts are painful to use, Win-Shift-6
     probably being the worst. What I wanted is to replace the Mod part
     with another shortcut, a bit in the Emacs fashion, so that instead
     of Win-Shift-6 I would have for example a sequence of Ctrl-m and
     Shift-6.
 
-    </p>
-
     mauke on \#xmonad was extremely helpful, he came up with this code:
-
-    </p>
 
     <!-- HTML generated using hilite.me -->
 
@@ -157,16 +129,10 @@ A few notes about xmonad set up and usage:
     ~~~~
 
     </div>
-    </p>
 
     which worked as advertised. To re-load xmonad after you changed the
     config file just press Mod-q. It takes just a second to re-compile
     and leaves all open windows intact.
-
-    </p>
-    <p>
-
-</p>
 
 After using xmonad for 2 days I must say I'm a convert. The keyboard
 [short-cuts][] feel very natural, it's not difficult to see the

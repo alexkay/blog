@@ -1,6 +1,6 @@
 Title: New shuffle modes in Banshee
 Author: Alexander Kojevnikov
-Tags: Banshee, GNOME
+Tags: banshee, gnome
 
 ![New shuffle modes][]Next version of [Banshee][] will introduce two new
 shuffle modes: [by rating][] and [by score][]. In this post I will
@@ -10,28 +10,19 @@ In the random shuffle mode (*aka* shuffle by song), every track has an
 [equal probability][] to be selected. For example if our library
 contains 1,000 tracks, each of them will be chosen with probability
 
-<p>
 > *P~t~ = 1 ÷ 1,000 = 0.001*
-
-</p>
 
 But what if we want some tracks to be played more often than others? Say
 we have 100 favourite tracks and want to play each of them three times
 as often as any other track? In probability terms this can be written as
 
-<p>
 > *P~s~ = 3 × P~t~*
-
-</p>
 
 where *s* are our favourite tracks and *t* – the other 900 tracks in the
 library. Because the sum of all probabilities must be equal to one, we
 have
 
-<p>
 > *100 × 3 × P~t~ + 900 × P~t~ = 1 → P~t~ = ^1^/~1,200~*
-
-</p>
 
 To chose the next track, we can pretend that our library contains 1,200
 songs and pick one at random. If the track number is ≤ 100 × 3, we
@@ -41,10 +32,7 @@ the 900 remaining songs.
 If the library is partitioned into *n* slots, each containing *C~i~*
 tracks, we will have
 
-<p>
 > *∑~i=1,n~ C~i~ ⋅ w~i~ ⋅ P~1~ = 1*
-
-</p>
 
 where *P~1~* is the probability of selecting a track from the first
 partition, and *w~i~* tells how frequently tracks from the *i*-th
@@ -71,10 +59,7 @@ rated 4, and so on.
 In Banshee we use *β = φ ≈ 1.61803*, also known as the [golden ratio][].
 This number has an interesting property:
 
-<p>
 > *φ^n^ = φ^n-1^ + φ^n-2^*
-
-</p>
 
 In terms of ratings, it means that songs with 5 stars will be played as
 often as songs with 4 and 3 stars combined, and so on.
@@ -88,10 +73,7 @@ We cannot use *φ* for *β* because this time we have much more partitions
 – the songs with low scores would be hardly ever played. To keep scores
 behaving similar to ratings we need to scale the weights:
 
-<p>
 > *β = φ^¼^, w~i~ = φ^(i-1)/4^*
-
-</p>
 
 Hope that wasn't too tangled and I promise next post won't include a
 single formula :)

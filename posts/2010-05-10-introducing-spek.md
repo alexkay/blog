@@ -1,5 +1,5 @@
 Title: Introducing Spek
-Tags: GNOME, Spek
+Tags: gnome, spek
 
 I just released version 0.1 of [Spek][] -- a little program that shows
 [spectrograms][] of audio files. Spek is written in [Vala][] and uses
@@ -21,8 +21,6 @@ add a bunch of features before releasing version 1.0:
 -   Associate Spek with audio files to use it as a viewer.
 -   Use multiple threads to speed-up processing.
 
-</p>
-
 You can download the tarball from the project's [website][]. To build
 and run:
 
@@ -34,13 +32,10 @@ $ tar -xjvf spek-0.1.tar.bz2$ cd spek-0.1$ ./configure$ make$ src/spek
 ~~~~
 
 </div>
-</p>
 
 Or \`sudo make install\` to have it installed.
 
 ### Contribute
-
-</p>
 
 The code is available on [Gitorious][]. I really need and will
 appreciate help in these areas:
@@ -49,11 +44,8 @@ appreciate help in these areas:
 -   Translations
 -   Review of autotools-related code
 
-</p>
 
 ### Why Vala?
-
-</p>
 
 I initially wanted to write Spek in Haskell to practice the language
 after reading [The Haskell School of Expression][] (generously sent to

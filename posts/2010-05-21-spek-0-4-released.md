@@ -1,5 +1,5 @@
 Title: Spek 0.4 Released
-Tags: GNOME, Spek
+Tags: gnome, spek
 
 I've just released version 0.4 of [Spek][] -- an acoustic spectrum
 analyser for GNU/Linux and Windows.
@@ -13,8 +13,6 @@ This version brings the following features and and improvements:
 -   Support 24-bit FLACs.
 -   Drag and Drop support.
 -   Show file name and its properties in the window.
-
-</p>
 
 Grab Spek 0.4 while it's hot, the source code tarball and the Windows
 installer can be downloaded [here][].

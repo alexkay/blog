@@ -1,5 +1,5 @@
 Title: DIY NAS with Debian Lenny
-Tags: Linux
+Tags: linux
 
 After [playing with FreeNAS][] I ended up using Debian for my server.
 FreeNAS is a great distribution if you want an out of the box
@@ -7,19 +7,13 @@ experience, but I found it hard to customise, mostly because I'm not
 very familiar with BSDs. Also, they are [switching to Debian][] for the
 next version. So, Debian it is.
 
-</p>
-
 This post will explain how to set up a NAS server with Debian running
 essential services such as ssh, samba, nfs, cups, rdiff-backup and
 rtorrent with a web interface; and using two HDDs in RAID 1 mode with
 everything encrypted. It took me awhile to research all bits and pieces,
 hopefully it will save you time if you are going to do a similar set up.
 
-</p>
-
 ### Table of contents
-
-</p>
 
 -   [Hardware][]
 -   [Partition layout][]
@@ -35,18 +29,12 @@ hopefully it will save you time if you are going to do a similar set up.
 -   [Growing partitions][]
 -   [A2000 tweaks][]
 
-</p>
-
 ### Hardware
-
-</p>
 
 I use a [VIA ARTiGO A2000][] barebone storage server. It's powered by a
 VIA C7-D processor, which has a built-in encryption engine called
 [Padlock][] — quite useful for our scenario. If you are unsure which
 server to get, I can highly recommend A2000.
-
-</p>
 
 Some parts of this walk-through are specific to A2000 or C7, but most of
 it will apply to any hardware as long as it includes two HDDs and is
@@ -54,25 +42,17 @@ compatible with Lenny.
 
 ### Partition layout
 
-</p>
-
 I assume that you know how to use the Debian installer, if not — check
 the [documentation][]. Because A2000 doesn't have a CD-ROM, I booted the
 installer from a [memory stick][], you might need to do the same.
 
-</p>
-
 The tricky part of the installation process is disk partitioning. I used
 the following layout, though there are many ways to do the set up.
-
-</p>
 
 First we create RAID 1 partitions. We need a separate partition for
 /boot, because it won't be encrypted; and for /tmp, because it will have
 encryption settings different from the root partition. This means we
 will have three partitions on each disk:
-
-</p>
 
 -   Select FREE SPACE on **hda** and create a new partition.
 -   I used 512 MB for /boot, change it to what feels sane to you.
@@ -92,12 +72,8 @@ will have three partitions on each disk:
 -   Do the same for **/dev/hda2** and **/dev/hdb2**.
 -   Do the same for **/dev/hda3** and **/dev/hdb3**.
 
-</p>
-
 Phew, that was quite a few steps! Now you will see three RAID1 devices
 in the list, let's set them up:
-
-</p>
 
 -   Select device \#0, change "Use as" to "ext2". Set mount point as
     /boot.
@@ -110,8 +86,6 @@ in the list, let's set them up:
     sure you use a strong one but remember that there is no way to
     recover any of your encrypted data if you lose it.
 
-</p>
-
 \* When creating a physical volume for encryption, you can select the
 encryption algorithm and the key size. I use [AES][], because C7
 provides hardware support for it; and 128 bits instead of default 256,
@@ -119,13 +93,9 @@ because I'm not paranoid. Do your research and preferably select what
 your hardware supports. Software encryption is likely to be slow unless
 you have a very fast CPU.
 
-</p>
-
 You should see two encrypted volumes now: md1\_crypt is automatically
 set up to be used as swap (do it manually if it's not); md2\_crypt
 however needs more tweaking.
-
-</p>
 
 -   Edit it and change "Use as" to "physical volume for LVM".
 -   Select "Configure the Logical Volume Manager" from the main menu.
@@ -141,19 +111,13 @@ however needs more tweaking.
     [this benchmark][], but you can select ext3 if you want.
 -   When mounting, select "Enter manually" and enter "/data".
 
-</p>
-
 That's it! With this scheme, data and root partitions sit on top of an
 LVM group, which sits on top of an encrypted volume, which sits on top
 of a multi-disk volume. [Some people][] prefer to have separate
 encrypted partitions for root and for data, but then you will need to
 enter passphrases for each of them on start up.
 
-</p>
-
 ### Finalising the installation and fixing GRUB
-
-</p>
 
 The rest of the installation should be straight-forward. When you reach
 the "Software selection" screen, make sure you choose "Standard system"
@@ -161,15 +125,11 @@ and "File server"; and unselect "Desktop environment" — you are not
 going to need it on a headless server. Also tick off "Print server" if
 you need (I do).
 
-</p>
-
 After everything is installed, boot your server, type your passphrase to
 unlock the encrypted partition, and login as root. Now, because the
 installer writes GRUB only to the first disk, we need to install it
 manually to the second. Without this, if your first disk fails you won't
 be able to boot:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -179,16 +139,11 @@ be able to boot:
 ~~~~
 
 </div>
-</p>
 
 ### SSH and sudo
 
-</p>
-
 Let's install SSH, otherwise we will need a spare monitor and a keyboard
 connected to the server:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -198,15 +153,12 @@ connected to the server:
 ~~~~
 
 </div>
-</p>
 
 Edit /etc/ssh/sshd\_config, I suggest disabling PermitRootLogin and
 PasswordAuthentication and enabling PubkeyAuthentication. If you decide
 to use public key authentication, add your public key to
 \~/ssh/authorized\_keys. Then restart sshd, install sudo, and edit the
 list of sudoers:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -216,21 +168,14 @@ list of sudoers:
 ~~~~
 
 </div>
-</p>
 
 ### Padlock modules
-
-</p>
 
 This section is specific to VIA C7 CPU. As I mentioned, it includes the
 hardware encryption engine called Padlock. The engine is supported by
 the Linux kernel, but the support is not enabled by default.
 
-</p>
-
 First make sure you have it:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -240,12 +185,10 @@ First make sure you have it:
 ~~~~
 
 </div>
-</p>
 
 If the modules load fine, [these steps][] (thanks Google Translate!)
 will auto-load them:
 
-</p>
 
 -   Edit /etc/modprobe.d/aliases and add this line:  
    alias aes padlock\_aes
@@ -255,19 +198,13 @@ will auto-load them:
 -   Run \`update-initramfs -u\`, it should backup the image in /boot for
     you, but it never hurts to back it up manually.
 
-</p>
-
 These steps are needed because Padlock modules must be loaded at boot,
 to work with our encrypted partitions. If they are loaded at a later
 stage, the software encryption modules will not be replaced because they
 are already in use.
 
-</p>
-
 After rebooting, check if Padlock is used. If aes\_i586 is in use
 instead of padlock\_aes, you did something wrong:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -277,12 +214,9 @@ instead of padlock\_aes, you did something wrong:
 ~~~~
 
 </div>
-</p>
 
 To enable hardware encryption for SSL, edit /etc/ssl/openssl.cnf and add
 this before the [new\_oids] section:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -292,11 +226,8 @@ openssl_conf = openssl_def[openssl_def]engines = openssl_engines[openssl_engines
 ~~~~
 
 </div>
-</p>
 
 After the change, observe an enormous speed bump with:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -306,17 +237,12 @@ After the change, observe an enormous speed bump with:
 ~~~~
 
 </div>
-</p>
 
 ### NFS
-
-</p>
 
 If you selected "File server" during the installation, NFS should
 already be up and running. To share the entire /data partition, edit
 /etc/exports and add this line:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -326,12 +252,9 @@ already be up and running. To share the entire /data partition, edit
 ~~~~
 
 </div>
-</p>
 
 Check [NFS documentation][] if you want something different. After
 changing your exports, reload them with:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -341,12 +264,9 @@ changing your exports, reload them with:
 ~~~~
 
 </div>
-</p>
 
 On the client computers, add this line to /etc/fstab, replacing
 \<server\> with the IP of your NAS:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -356,22 +276,15 @@ On the client computers, add this line to /etc/fstab, replacing
 ~~~~
 
 </div>
-</p>
 
 Then mount with \`mount -a\`. Again, check [the docs][] if you need more
 control over how the NFS share is mounted.
 
-</p>
-
 ### Samba
-
-</p>
 
 As with NFS, Samba should already be running on your server. Append this
 to /etc/samba/smb.conf, replacing \<user\> with a non-root login on your
 server:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -381,11 +294,8 @@ server:
 ~~~~
 
 </div>
-</p>
 
 Then restart Samba and you are set:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -395,27 +305,20 @@ Then restart Samba and you are set:
 ~~~~
 
 </div>
-</p>
 
 Check [Samba docs][] for more options.
 
 ### CUPS
-
-</p>
 
 The set up heavily depends on the printer model. I have a fairly common
 Epson colour ink printer, its driver is included in the gutenprint
 package which gets installed if you select "Print server" during the
 installation.
 
-</p>
-
 You will need to edit /etc/cups/cupsd.conf to make the CUPS web
 interface accessible from another machine, then just add your printer
 from http://:631/. Also check /etc/samba/smb.conf, it should have these
 sections:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -425,16 +328,11 @@ sections:
 ~~~~
 
 </div>
-</p>
 
 Check [CUPS docs][] if it doesn't work or if you want to fine-tune
 permissions.
 
-</p>
-
 ### rTorrent + ruTorrent
-
-</p>
 
 FreeNAS comes with [Transmission][] BitTorrent client. It looks nice but
 the web interface is too simple to my taste, it doesn't even support
@@ -443,14 +341,10 @@ probably a bit heavy for a small server. After a bit of research I ended
 up using [rTorrent][], which is what most blogs recommend for a headless
 server.
 
-</p>
-
 There are [quite a few][] frontends for rTorrent, the one I liked was
 [ruTorrent][], its development also seems to be the most active at the
 moment. It's an almost exact rip-off of a popular Windows-based
 [μTorrent][] client, hence the name.
-
-</p>
 
 ruTorrent requires a recent version of rTorrent *compiled with* the
 XML-RPC support. The bad news is that Lenny doesn't have all packages
@@ -460,30 +354,20 @@ switching back to Lenny. Depending on your situation, switching to
 testing may not be the best idea, do it only if you are comfortable
 breaking your system.
 
-</p>
-
 After installing build-deps, get the latest tarball of rTorrent,
 ./configure it with \`--with-xmlrpc-c\` option, make and make install.
 Afterwards, copy an example [.rtorrent.rc][] file to \~/ and edit it to
 suit your needs. Also follow the steps in the [Starting rTorrent on
 System Startup][] section.
 
-</p>
-
 ruTorrent can work with any web server supporting PHP 5.0, I went for
 [lighttpd][]. Install it from the official repo, then follow ruTorrent
 [set up guide][].
 
-</p>
-
 The tricky part is setting up XML-RPC, there are a few contradictions in
 the the rTorrent and ruTorrent docs but the following works for me™.
 
-</p>
-
 Add to \~/.rtorrent.rc:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -493,13 +377,10 @@ scgi_port = localhost:5000encoding_list = UTF-8
 ~~~~
 
 </div>
-</p>
 
 Edit /etc/lighttpd/lighttpd.conf as [described here][]. Ignore
 [instructions][] from rTorrent, they won't work. Restart rTorrent and
 the web server after you are done:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -509,11 +390,8 @@ the web server after you are done:
 ~~~~
 
 </div>
-</p>
 
 ### Backup with rdiff-backup
-
-</p>
 
 [rdiff-backup][] is such a fantastic tool: it's available on all major
 platforms, it's ultra fast and efficient, it performs backups
@@ -521,13 +399,9 @@ incrementally, it can work over SSH and also it allows to restore files
 at any point of time. If you don't already use it to backup your home
 directories — give it a try!
 
-</p>
-
 On the server, there's nothing special to be done to install it. Just
 get it from Debian repos and add your public keys to
 \~/ssh/authorized\_keys — we are going to use SSH.
-
-</p>
 
 On Linux clients, invoke it like this, replacing \<user\> with your
 login and \<server\> with the IP of the NAS:
@@ -540,12 +414,9 @@ $ rdiff-backup /home/<user> <server>::/data/Backup/<user>
 ~~~~
 
 </div>
-</p>
 
 On Windows clients, install [Putty][] and follow [these steps][1] to
 generate a compatible key. Then invoke rdiff-backup like this:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -555,19 +426,12 @@ rdiff-backup.exe --no-hard-links --remote-schema "plink.exe -i C:Users<WinUser>p
 ~~~~
 
 </div>
-</p>
 
 Check [rdiff-backup docs][] for more options, there are plenty!
 
-</p>
-
 ### Performance
 
-</p>
-
 Extremely unscientific tests, but they give an idea:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -577,35 +441,24 @@ Extremely unscientific tests, but they give an idea:
 ~~~~
 
 </div>
-</p>
 
 **hda** is a 1TB [WD Caviar Green][], **hdb** is a 640GB [Seagate
 Barracuda][]. I know, using different disk models is bad for RAID 1, but
 that's what I had. At some point I will get a second 1TB WD, read the
 next section to find out how to grow the mirror when upgrading drives.
 
-</p>
-
 NFS transfers are slower, but good enough for my needs: 49 MB/sec when
 reading from a NFS share and 23 MB/sec when writing to it.
 
-</p>
-
 ### Growing partitions
-
-</p>
 
 When your RAID 1 mirror is filled up you probably want to upgrade the
 disks with bigger ones. This can be done by replacing the first disk,
 syncing the mirror, then replacing the second one, and syncing again.
 After that you need to grow your data partition.
 
-</p>
-
 So, shut down your NAS, replace one of the drives, boot up and SSH to
 it. Check the status the mirror, notice that only one drive is used:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -615,13 +468,10 @@ it. Check the status the mirror, notice that only one drive is used:
 ~~~~
 
 </div>
-</p>
 
 Here I assume that **hda** is used and **hdb** has been replaced, run
 \`fdisk -l\` to check which is which in your case. Now copy the
 partition table from **hda** to **hdb**:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -631,19 +481,14 @@ partition table from **hda** to **hdb**:
 ~~~~
 
 </div>
-</p>
 
 Adjust the last partition on **hdb**: run \`cfdisk /dev/hdb\`, select
 **hdb3** and delete it, re-create **hdb3** to use the entire free space,
 change the partition type to "FD Linux raid autodetect", and finally
 write changes to disk and quit.
 
-</p>
-
 Add new partitions to the RAID array and wait until the sync is
 finished:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -653,11 +498,8 @@ finished:
 ~~~~
 
 </div>
-</p>
 
 Add grub to **hdb**:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -667,13 +509,10 @@ Add grub to **hdb**:
 ~~~~
 
 </div>
-</p>
 
 If you replaced the drive with a bigger one, you need to grow the last
 partition to take advantage of all available space. Here's how to do it
 (the steps are borrowed from [here][]):
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -683,11 +522,8 @@ partition to take advantage of all available space. Here's how to do it
 ~~~~
 
 </div>
-</p>
 
 Reboot, then run this:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -697,14 +533,11 @@ Reboot, then run this:
 ~~~~
 
 </div>
-</p>
 
 Note the number <span style="color:#fb660a;font-weight:bold;">X</span>,
 we will use it in the next command. Also replace
 <span style="color:#fb660a;font-weight:bold;">MAIN-data</span> with the
 name you used for the **/data** partition:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -714,11 +547,8 @@ name you used for the **/data** partition:
 ~~~~
 
 </div>
-</p>
 
 Finally, grow the filesystem:
-
-</p>
 
 <!-- HTML generated using hilite.me -->
 
@@ -728,24 +558,17 @@ Finally, grow the filesystem:
 ~~~~
 
 </div>
-</p>
 
 The previous command will only work for XFS, adapt it if you use ext3 or
 another file system.
 
-</p>
-
 ### A2000 tweaks
-
-</p>
 
 Inspired by [this][] forum post I replaced stock A2000 fans with [Scythe
 Mini Kaze SY124010L][] 40mm fan on the CPU and [Noctua NF-R8][] 80mm fan
 on the rear exhaust. This made A2000 even more quiet. Other than that, I
 cannot think of any other mod I would like to do, A2000 is a [very
 nice][] piece of hardware.
-
-</p>
 
   [playing with FreeNAS]: http://versia.com/2009/11/04/grow-encrypted-raid1-freenas/
   [switching to Debian]: http://sourceforge.net/apps/phpbb/freenas/viewtopic.php?f=5&t=3966

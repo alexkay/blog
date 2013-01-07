@@ -1,6 +1,6 @@
 Title: Spek 0.3 Released
 Author: Alexander Kojevnikov
-Tags: GNOME, Spek
+Tags: gnome, spek
 
 [Spek 0.3][] is out, just 2 days after the previous release. This
 version includes the following features and fixes:
@@ -17,8 +17,6 @@ version includes the following features and fixes:
     associate itself with common audio formats so that you could use it
     as a viewer.
 -   Fix a crash when the window width is very small.
-
-</p>
 
 Spek 0.3 source code tarball and the Windows installer can be downloaded
 [here][].

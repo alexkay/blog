@@ -1,6 +1,6 @@
 Title: FreeBSD ports/UPDATING web feed
 Author: Alexander Kojevnikov
-Tags: FreeBSD, GNOME, Perl
+Tags: freebsd, perl
 
 Two things recently happened to me: I fell in love with FreeBSD and I
 got a new job (and will be moving to Malaysia very soon!)

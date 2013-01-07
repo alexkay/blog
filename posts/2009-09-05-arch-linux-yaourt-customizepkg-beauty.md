@@ -1,5 +1,5 @@
 Title: Arch Linux + yaourt + customizepkg = beauty!
-Tags: Linux
+Tags: linux
 
 I recently switched my main desktop from Ubuntu to [Arch Linux][],
 mostly for its rolling release model. I really like Ubuntu but I got
@@ -25,7 +25,6 @@ $ yaourt -S customizepkg
 ~~~~
 
 </div>
-</p>
 
 customizepkg allows to tweak [PKGBUILDs][]. You just add a file to
 /etc/customizepkg.d/ with the same name as the package you want to
@@ -43,7 +42,6 @@ replace#global#cd "${srcdir}\/${pkgname}-${pkgver}"#cd "${srcdir}\/${pkgname}-${
 ~~~~
 
 </div>
-</p>
 
 The file will tell customizepkg to add two lines to libwnck's PKGBUILD:
 
@@ -55,7 +53,6 @@ The file will tell customizepkg to add two lines to libwnck's PKGBUILD:
 ~~~~
 
 </div>
-</p>
 
 Then you just install the package as you always do, but using yaourt
 instead of pacman:
@@ -68,7 +65,6 @@ $ yaourt -S libwnck
 ~~~~
 
 </div>
-</p>
 
 Et voilà, yaourt realises that you want to build libwnck from source,
 gets its PKGBUILD, changes it, and builds. When building, the patch is

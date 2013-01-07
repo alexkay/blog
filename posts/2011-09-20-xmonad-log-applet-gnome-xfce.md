@@ -1,6 +1,6 @@
 Title: xmonad-log-applet for GNOME and Xfce
 Author: Alexander Kojevnikov
-Tags: GNOME, Haskell, Xmonad
+Tags: gnome, haskell, xmonad
 
 [xmonad-log-applet][] is a handy panel applet/plugin for GNOME (and now
 Xfce) users who use [Xmonad][] as an alternative window manager. The
@@ -26,8 +26,6 @@ Changes since the previous release:
 -   Fixed install locations.
 -   Updated sample xmonad.hs.
 
-</p>
-
 To install get and unpack [the tarball][] or clone [the
 repo][xmonad-log-applet], then run:
 
@@ -39,7 +37,6 @@ repo][xmonad-log-applet], then run:
 ~~~~
 
 </div>
-</p>
 
 Substitute \`gnome2\` with \`gnome3\` or \`xfce4\` if that's what you
 use. If you cloned the git repo, use \`./autogen.sh\` instead of
@@ -55,10 +52,7 @@ GHC 7.x, but it's easy to work around:
 <div style="background: #111111; overflow:auto;width:auto;color:white;background:black;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
 ~~~~ {style="margin: 0; line-height: 125%"}
 % cabal update% cabal unpack DBus% cd DBus-0.4% $EDITOR DBus/Internal.hsc
-~~~~
-
 </div>
-</p>
 
 Replace \`import Control.Exception\` with \`import
 Control.OldException\`, then:
@@ -68,10 +62,7 @@ Control.OldException\`, then:
 <div style="background: #111111; overflow:auto;width:auto;color:white;background:black;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
 ~~~~ {style="margin: 0; line-height: 125%"}
 % cabal configure% cabal build% cabal install
-~~~~
-
 </div>
-</p>
 
 After this, your xmonad.hs should compile.
 

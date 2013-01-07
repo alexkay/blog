@@ -1,5 +1,5 @@
 Title: Spek 0.2 - now works in Windows
-Tags: GNOME, Spek
+Tags: spek, gnome
 
 [Spek][] now has a fully functional Windows port! The installer bundles
 GTK+, GStreamer and all their dependencies, you don't need to install

@@ -1,5 +1,5 @@
 Title: Spek 0.5 - Mac OS X port
-Tags: GNOME, Spek
+Tags: gnome, spek
 
 I'm happy to announce the release of version 0.5 of [Spek][], a
 multi-platform acoustic spectrum analyser.
@@ -16,8 +16,6 @@ Changes since the previous release:
 -   Mac OS X installer.
 -   Use Pango to render text.
 -   Brand new icon.
-
-</p>
 
 This is the first version of Spek that features a Mac OS X port. All
 binaries in the app bundle are compiled completely from scratch using a

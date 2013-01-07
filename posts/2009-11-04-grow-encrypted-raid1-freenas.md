@@ -1,5 +1,5 @@
 Title: Growing mirrored and encrypted partitions in FreeNAS
-Tags: FreeNAS
+Tags: freenas, freebsd
 
 *UPDATE 2009-11-19: [this post][] explains how to do the same in
 Debian.*
@@ -39,8 +39,6 @@ Here is how, in case you might need it:
 6.  Get to the NAS console, either directly or via SSH. Things will get
     more interesting now:
 
-    </p>
-
     <!-- HTML generated using hilite.me -->
 
     <div style="overflow:auto;width:auto;color:white;background:black;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
@@ -49,7 +47,6 @@ Here is how, in case you might need it:
     ~~~~
 
     </div>
-    </p>
 
     [geli][] is the command line tool to manage encrypted storage in
     FreeNAS. *raid1* is the volume name I used, yours might be
@@ -61,8 +58,6 @@ Here is how, in case you might need it:
 
 8.  Now back to the terminal:
 
-    </p>
-
     <!-- HTML generated using hilite.me -->
 
     <div style="overflow:auto;width:auto;color:white;background:black;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
@@ -71,7 +66,6 @@ Here is how, in case you might need it:
     ~~~~
 
     </div>
-    </p>
 
     This will restore the metadata from our backup and re-attach the
     encrypted volume
@@ -79,7 +73,6 @@ Here is how, in case you might need it:
 9.  Fix [the partition table][], re-create and grow the partition to
     fill the entire disk:
 
-    </p>
 
     <!-- HTML generated using hilite.me -->
 
@@ -89,14 +82,11 @@ Here is how, in case you might need it:
     ~~~~
 
     </div>
-    </p>
 
     Note that the device name ends with ".eli" – it's our encrypted
     disk.
 
 10. Finally go to Disks/Mount Point and mount the partition.
-
-</p>
 
 That's it, your encrypted partition should be functional now!
 

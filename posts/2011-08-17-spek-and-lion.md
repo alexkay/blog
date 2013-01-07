@@ -1,5 +1,5 @@
 Title: Spek and Lion
-Tags: GNOME, Spek
+Tags: spek
 
 ![Spek and Lion][]
 

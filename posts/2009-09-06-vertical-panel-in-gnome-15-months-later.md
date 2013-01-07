@@ -1,45 +1,38 @@
 Title: Vertical panel in GNOME, 15 months later
-Tags: GNOME, Linux
+Tags: gnome, linux
 
 [![Fixed vertical panel][]][]
 
 I'm happy to report that [the subject][] is mostly fixed.
 
-</p>
 
 **Window List**: [bgo\#86382][] has a working [patch][], it's not
 perfect (read comments 140, 141 and 145) but fixes the problem.
 
-</p>
 
 **Notification Area**: [bgo\#531371][] also has [a patch][] which works
 really well.
 
-</p>
 
 **Quick Launch**: My fix is included in version 2.12.6 of [the
 applet][].
 
-</p>
 
 **Main Menu**: The ugly arrow ([bgo\#562247][] and [bgo\#564903][]) can
 be removed by setting `"has-arrow"` to `FALSE` in
 gnome-panel/panel-menu-button.c
 
-</p>
 
 **Keyboard Indicator**: [bgo\#591515][] is not yet fixed. A quick and
 dirty hack is to comment out the entire switch statement in
 `GSwitchitAppletUpdateAngle()` function from
 gswitchit/gswitchit-applet.c
 
-</p>
 
 I'm using a GNOME desktop with all these fixes daily and I'm quite happy
 with it. You can get my customizepkg files for [Arch Linux][] from
 [GitHub][]; read how to use them in the [previous post][].
 
-</p>
 
   [Fixed vertical panel]: http://versia.com/wp-content/uploads/2009/09/fixed-vertical-panel.png?w=40
     "Fixed vertical panel"

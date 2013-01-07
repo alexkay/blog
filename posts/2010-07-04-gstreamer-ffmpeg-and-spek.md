@@ -1,6 +1,6 @@
 Title: GStreamer, FFmpeg and Spek
 Author: Alexander Kojevnikov
-Tags: GNOME, Spek
+Tags: spek, gnome
 
 Next version of [Spek][] will use [FFmpeg][] libraries to decode audio
 files. There are several reasons for the switch from [GStreamer][]:
