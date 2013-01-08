@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*- #
 
 import datetime
+import pelican
 
 AUTHOR = u'Alexander Kojevnikov'
 SITENAME = u'Alexander Kojevnikov | Blog'
@@ -27,3 +28,8 @@ MENUITEMS = (
 DEFAULT_PAGINATION = 10
 
 YEAR = datetime.datetime.utcnow().year
+
+pelican.readers.MarkdownReader.extensions.extend([
+    'plugins.superscript',
+    'plugins.subscript',
+])
