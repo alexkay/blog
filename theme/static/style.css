@@ -90,11 +90,16 @@ h3 {
 
 .right {
     float: right;
+    margin: 0 0 1em 1em;
 }
 
 .center {
     margin: 0 auto;
     display: block;
+}
+
+.shrink {
+    width: 100%;
 }
 
 // Pygments - fruity

@@ -30,6 +30,7 @@ DEFAULT_PAGINATION = 10
 YEAR = datetime.datetime.utcnow().year
 
 pelican.readers.MarkdownReader.extensions.extend([
+    'toc',
     'plugins.superscript',
     'plugins.subscript',
 ])
