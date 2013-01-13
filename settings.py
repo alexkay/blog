@@ -19,6 +19,8 @@ TIMEZONE = 'UTC'
 THEME = 'theme'
 FILES_TO_COPY = (
     ('favicon.ico', 'favicon.ico'),
+    ('cv.html', 'cv-alexander-kojevnikov.html'),
+    ('cv.pdf', 'cv-alexander-kojevnikov.pdf'),
 )
 MENUITEMS = (
     ('Archives', '/archives.html'),
