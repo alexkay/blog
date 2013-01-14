@@ -9,4 +9,7 @@ clean:
 	mkdir -p public
 	find public -mindepth 1 -delete
 
-.PHONY: all clean
+upload:
+	rsync -avhzS --delete public nginx.conf server:blog
+
+.PHONY: all clean upload
