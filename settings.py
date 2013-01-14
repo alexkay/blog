@@ -17,6 +17,8 @@ DEFAULT_DATE_FORMAT = '%Y-%m-%d'
 DEFAULT_LANG = u'en'
 TIMEZONE = 'UTC'
 THEME = 'theme'
+PAGE_URL = '{slug}.html'
+PAGE_SAVE_AS = '{slug}.html'
 FILES_TO_COPY = (
     ('favicon.ico', 'favicon.ico'),
     ('cv.html', 'cv-alexander-kojevnikov.html'),
