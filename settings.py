@@ -30,6 +30,7 @@ MENUITEMS = (
 DEFAULT_PAGINATION = 10
 
 YEAR = datetime.datetime.utcnow().year
+GA_ACCOUNT = 'UA-25837667-1'
 
 pelican.readers.MarkdownReader.extensions.extend([
     'toc',
