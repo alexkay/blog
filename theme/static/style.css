@@ -102,11 +102,11 @@ h3 {
     width: 100%;
 }
 
-// Pygments - fruity
+/* Pygments - fruity */
 .codehilite .hll { background-color: #333333 }
 .codehilite {
     background: #111111;
-    color: #ffffff
+    color: #ffffff;
     overflow: auto;
     width: auto;
     border: solid #888;
