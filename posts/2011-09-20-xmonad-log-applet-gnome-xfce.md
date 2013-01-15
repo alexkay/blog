@@ -1,5 +1,5 @@
 Title: xmonad-log-applet for GNOME and Xfce
-Tags: gnome, haskell, xmonad
+Tags: gnome, haskell, xmonad, xla
 
 [xmonad-log-applet][] is a handy panel applet/plugin for GNOME (and now Xfce)
 users who use [Xmonad][] as an alternative window manager. The applet will show
