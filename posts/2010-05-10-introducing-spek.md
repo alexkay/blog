@@ -26,7 +26,8 @@ run:
 
 ```console
 % tar -xjvf spek-0.1.tar.bz2
-% cd spek-0.1$ ./configure
+% cd spek-0.1
+% ./configure
 % make
 % src/spek
 ```

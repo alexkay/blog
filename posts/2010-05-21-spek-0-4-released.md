@@ -6,7 +6,7 @@ GNU/Linux and Windows.
 
 ![Spek showing a 24-bit FLAC file][sshot]{: .center }
 
-This version brings the following features and and improvements:
+This version brings the following features and improvements:
 
 * Associate with audio files ("Open with..." menu in file managers.)
 * Show the name of the open file in the window title.
