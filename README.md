@@ -6,7 +6,7 @@ Source code for my blog, written in Markdown and generated with [Pelican][].
 
     % virtualenv env
     % source env/bin/activate
-    % pip install pelican markdown
+    % pip install pelican==3.2.2 markdown
     % make
 
 Edit the main `nginx.conf`:

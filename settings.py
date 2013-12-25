@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 
+from __future__ import unicode_literals
+
 import datetime
 import pelican
 
@@ -31,11 +33,16 @@ MENUITEMS = (
 
 DEFAULT_PAGINATION = 10
 
+# Uncomment when debugging on a dev box.
+# RELATIVE_URLS = True
+
 YEAR = datetime.datetime.utcnow().year
 GA_ACCOUNT = 'UA-25837667-1'
 
-pelican.readers.MarkdownReader.extensions.extend([
+MD_EXTENSIONS = [
+    'codehilite(css_class=highlight)',
+    'extra',
     'toc',
     'plugins.superscript',
     'plugins.subscript',
-])
+]
