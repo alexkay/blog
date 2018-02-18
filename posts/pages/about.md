@@ -8,7 +8,7 @@ I develop [Spek][] (an acoustic spectrum analyser), [muspy][] (an album
 release notification service) and contribute to a bunch of other [free software][]
 projects. You can see the full list on my [Ohloh profile][].
 
-[Email], [GitHub][], CV ([HTML][] | [PDF][]), [LinkedIn][]
+[Email], [GitHub][], [LinkedIn][]
 
   [Thumbtack]: http://www.thumbtack.com/
   [Spek]: http://spek-project.org/
@@ -17,6 +17,4 @@ projects. You can see the full list on my [Ohloh profile][].
   [Ohloh profile]: https://www.ohloh.net/accounts/alexk
   [Email]: mailto:alexander@kojevnikov.com
   [GitHub]: https://github.com/alexkay
-  [HTML]: |filename|/cv.html
-  [PDF]: |filename|/cv.pdf
   [LinkedIn]: http://www.linkedin.com/in/alexanderkojevnikov

@@ -23,8 +23,6 @@ PAGE_URL = '{slug}.html'
 PAGE_SAVE_AS = '{slug}.html'
 FILES_TO_COPY = (
     ('favicon.ico', 'favicon.ico'),
-    ('cv.html', 'cv.html'),
-    ('cv.pdf', 'cv.pdf'),
 )
 MENUITEMS = (
     ('Archives', '/archives.html'),
