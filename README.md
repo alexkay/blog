@@ -4,7 +4,7 @@ Source code for my blog, written in Markdown and generated with [Pelican][].
 
 ## Setting up
 
-    % virtualenv env
+    % virtualenv env -p python2
     % source env/bin/activate
     % pip install pelican==3.2.2 markdown==2.3.1
     % make
@@ -13,10 +13,10 @@ Edit the main `nginx.conf`:
 
     http {
         ...
-        include /path/to/blog/nginx.dev.conf;
+        include /path/to/blog/nginx-dev.conf;
     }
 
-Update the project location in `blog/nginx.dev.conf` and restart nginx.
+Update the project location in `blog/nginx-dev.conf` and restart nginx.
 
 Add this line to your `/etc/hosts`:
 
